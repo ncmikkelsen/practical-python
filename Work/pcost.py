@@ -9,11 +9,13 @@ def portfolio_cost(filename):
 
         for line in f:
             row = line.split(',')
-            amount = int(row[1])
-            cost = float(row[2])
-            total_cost += amount * cost
-
+            try:
+                amount = int(row[1])
+                cost = float(row[2])
+                total_cost += amount * cost
+            except ValueError:
+                print('Error parsing', line)
         return total_cost
 
-cost = portfolio_cost('Data/portfolio.csv')
+cost = portfolio_cost('Data/missing.csv')
 print('Total cost:', cost)

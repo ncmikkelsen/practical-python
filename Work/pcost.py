@@ -2,6 +2,7 @@
 #
 # Exercise 1.27
 import csv
+import sys
 
 def portfolio_cost(filename):
     with open(filename) as f:
@@ -18,5 +19,10 @@ def portfolio_cost(filename):
                 print('Error parsing', row)
         return total_cost
 
-cost = portfolio_cost('Data/missing.csv')
+if len(sys.argv) == 2:
+    filename = sys.argv[1]
+else:
+    filename = 'Data/portfolio.csv'
+
+cost = portfolio_cost(filename)
 print('Total cost:', cost)
